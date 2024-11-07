@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.themeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.container{
+  margin-top: 50px;
+}
+.row{
+   margin: 0px auto;
+   width: 960px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <!-- 
+         1. for => th:each="변수명:${collection}"
+                    => 순차적 => #numbers.sequence(1,10)
+                    th:if="조건문" => EL
+         2. 태그 사이에 문자 출력
+            th:text / th:html
+         3. th:href="@{URL(변수=값,변수=값)}"
+         => JSP => 속도가 느리다
+            Spring-Boot : Vue
+            Spring-Boot : React
+       -->
+      <div class="col-md-3" th:each="vo:${list}">
+      <div class="thumbnail">
+        <a th:href="@{/food/detail(fno=${vo.fno})}">
+            <img th:src="'http://menupan.com'+${vo.poster}"style="width:230px; height: 120px">
+          <div class="caption">
+            <p th:text="${vo.name}"></p>
+          </div>
+        </a>
+      </div>
+    </div>
+    </div>
+    <div style="height: 10px"></div>
+    <div class="row">
+      <div class="text-center">
+        <ul class="pagination">
+          <li th:if="${startPage>1}"><a th:href="@{/(page=${startPage-1})}">&lt;</a></li>
+          <li th:each="i:${#numbers.sequence(startPage,endPage)}" th:class="${curpage==i?'active':''}">
+            <a th:href="@{/(page=${i})}" th:text="${i}"></a></li>
+          <li th:if="${endPage<totalPage}"><a th:href="@/(endPage+1)">&gt;</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
