@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org"
+xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- Core Stylesheet -->
+    <link href="../style.css" rel="stylesheet">
+
+    <!-- Responsive CSS -->
+    <link href="../css/responsive/responsive.css" rel="stylesheet">
+
+</head>
+<body id="top">
+    <th:block th:include="main/header"></th:block>
+    <th:block th:include="${main_html}"></th:block>
+    <th:block th:include="main/footer"></th:block>
+    <!-- Jquery-2.2.4 js -->
+    <script src="../js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="../js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap-4 js -->
+    <script src="../js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins JS -->
+    <script src="../js/others/plugins.js"></script>
+    <!-- Active JS -->
+    <script src="../js/active.js"></script>
+</body>
+</html>
